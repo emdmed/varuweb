@@ -344,35 +344,6 @@ export function AsciiAnimation({
     };
   }, [art, chaosChars, chaosFrames, settlingFrames, frameInterval, animationType, loop, startDelay, onPhaseChange, padding]);
 
-  if (fullscreen) {
-    return (
-      <div className={`fixed inset-0 overflow-hidden pointer-events-none ${className}`}>
-        <pre
-          className={`${textColor}`}
-          style={{
-            fontFamily: '"Courier New", Courier, "Lucida Console", monospace',
-            fontVariantLigatures: 'none',
-            fontFeatureSettings: '"liga" 0, "calt" 0',
-            letterSpacing: '0',
-            whiteSpace: 'pre',
-            display: 'block',
-            fontWeight: 'normal',
-            lineHeight: '1',
-            margin: 0,
-            padding: 0,
-            fontSize: `${charHeight}px`,
-            width: '100vw',
-            height: '100vh',
-          }}
-        >
-          {display}
-        </pre>
-        {/* Scanline effect for terminal feel */}
-        <div className="pointer-events-none absolute inset-0 animate-scan" />
-      </div>
-    );
-  }
-
   return (
     <div className={`relative w-full h-full flex items-center justify-center pointer-events-none ${className}`}>
       <pre
@@ -394,7 +365,7 @@ export function AsciiAnimation({
           fontWeight: 'normal',
           lineHeight: '1',
           maxWidth: '100%',
-          fontSize: 'clamp(0.4rem, 1vw, 1.5rem)',
+          fontSize: '0.85rem',
         }}
       >
         {display}

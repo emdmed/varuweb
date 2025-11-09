@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Electrolize } from "next/font/google";
+import { Electrolize, Major_Mono_Display } from "next/font/google";
 import "./globals.css";
 
 const electrolize = Electrolize({
   variable: "--font-electrolize",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const majormono = Major_Mono_Display({
+  variable: "--font-majormono",
   subsets: ["latin"],
   weight: "400",
 });
@@ -21,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${electrolize.variable} antialiased dark`}
+        className={`${electrolize.variable} ${majormono.variable} antialiased dark`}
       >
         {children}
       </body>
