@@ -101,7 +101,7 @@ export interface AsciiAnimationProps {
 
 export function AsciiAnimation({
   art = DEFAULT_ART,
-  chaosChars = 'VARUvaru',
+  chaosChars = '-_.                                                                                   ',
   chaosFrames = 20,
   settlingFrames = 30,
   frameInterval = 50,
@@ -365,14 +365,12 @@ export function AsciiAnimation({
           fontWeight: 'normal',
           lineHeight: '1',
           maxWidth: '100%',
-          fontSize: '0.85rem',
+          fontSize: '0.75rem',
         }}
       >
         {display}
       </pre>
 
-      {/* Scanline effect for terminal feel */}
-      <div className="pointer-events-none absolute inset-0  animate-scan" />
     </div>
   );
 }
