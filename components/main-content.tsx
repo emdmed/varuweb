@@ -19,7 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { AsciiAnimation } from "./ascii-animation";
 import { useEffect, useRef, useState } from "react";
-
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 const neovim_ascii = `
 	                                                                       
@@ -218,6 +218,7 @@ function FeatureRow({ feature, index }: { feature: typeof features[0], index: nu
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const rowRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -247,10 +248,10 @@ function FeatureRow({ feature, index }: { feature: typeof features[0], index: nu
   return (
     <div
       ref={rowRef}
-      className="flex py-4 opacity-0 transition-opacity duration-700 border-t-4 border-double"
+      className="flex flex-col lg:flex-row py-4 opacity-0 transition-opacity duration-700 border-t-4 border-double"
       style={{ opacity: isVisible ? 1 : 0 }}
     >
-      <div className="w-1/2">
+      <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
         {isVisible && feature.ascii && (
           <AsciiAnimation
             art={feature.ascii}
@@ -258,10 +259,11 @@ function FeatureRow({ feature, index }: { feature: typeof features[0], index: nu
             chaosFrames={10}
             settlingFrames={10}
             frameInterval={50}
+            fontSize={isMobile ? "0.3rem" : ""}
           />
         )}
       </div>
-      <div className="flex flex-col items-start justify-center w-1/2">
+      <div className="flex flex-col items-start justify-center w-full lg:w-1/2">
         <span className="majormono text-xl font-bold mb-2">{feature.title.toLocaleLowerCase()}</span>
         <span className="text-sm opacity-70">{feature.description}</span>
       </div>

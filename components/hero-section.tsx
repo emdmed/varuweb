@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { AsciiAnimation } from "@/components/ascii-animation";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 
 export function HeroSection() {
+  const isMobile = useIsMobile();
+
   const scrollToGetStarted = () => {
     const element = document.getElementById('get-started');
     if (element) {
@@ -15,24 +18,24 @@ export function HeroSection() {
   };
 
   return (
-    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden p-9">
+    <div className="relative min-h-[80vh] sm:min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden p-4 sm:p-6 lg:p-9">
 
       <div className="relative z-10 ">
         {/* Hero Content - Side by Side on Desktop */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-16 mb-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-6 sm:gap-8 lg:gap-12 xl:gap-16 mb-8 sm:mb-12 lg:mb-16">
 
-          <div className="flex flex-col items-center justify-center text-start space-y-8 ">
+          <div className="flex flex-col items-center justify-center text-start space-y-4 sm:space-y-6 lg:space-y-8 ">
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="majormono text-4xl tracking-tight text-emerald-300 ">Varu cli</h1>
-              <h2 className="font-sans font-bold tracking-tight text-5xl">
+              <h1 className="majormono text-2xl sm:text-3xl lg:text-4xl tracking-tight text-emerald-300 ">Varu cli</h1>
+              <h2 className="font-sans font-bold tracking-tight text-3xl sm:text-4xl lg:text-5xl">
                 Manage Your Node.js Projects
                 <span className="block text-primary">
-                  <span className="opacity-50 text-4xl">From the </span> <span className="majormono text-4xl text-emerald-300">terminal</span>
+                  <span className="opacity-50 text-2xl sm:text-3xl lg:text-4xl">From the </span> <span className="majormono text-2xl sm:text-3xl lg:text-4xl text-emerald-300">terminal</span>
                 </span>
               </h2>
 
-              <p className="text-lg text-foreground opacity-70 ">
+              <p className="text-sm sm:text-base lg:text-lg text-foreground opacity-70 ">
                 An interactive command-line dashboard built with React and Ink.
                 Monitor dev servers, manage dependencies, and navigate projects with vim-style shortcuts.
               </p>
@@ -58,9 +61,11 @@ export function HeroSection() {
             </div>
 
           </div>
-          <Card className="bg-background m-2 p-2">
-            <CardContent className="p-1">
-              <AsciiAnimation />
+          <Card className={`bg-background m-1 p-1 sm:m-2 sm:p-2 overflow-hidden ${isMobile ? "border-0 max-w-[90vw] max-h-[40vh]" : ""}`}>
+            <CardContent className={`p-1 ${isMobile ? "overflow-hidden max-h-[40vh]" : ""}`}>
+              <div className={isMobile ? "scale-75 origin-top-left" : ""}>
+                <AsciiAnimation fontSize={isMobile ? "0.4rem" : "0.75rem"} />
+              </div>
             </CardContent>
           </Card>
 

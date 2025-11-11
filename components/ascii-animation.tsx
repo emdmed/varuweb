@@ -107,7 +107,7 @@ export function AsciiAnimation({
   frameInterval = 50,
   animationType = "fade",
   textColor = "text-emerald-300",
-  fontSize = "text-sm",
+  fontSize = "1rem",
   className = "",
   onPhaseChange,
   loop = false,
@@ -365,7 +365,7 @@ export function AsciiAnimation({
           fontWeight: 'normal',
           lineHeight: '1',
           maxWidth: '100%',
-          fontSize: '0.75rem',
+          fontSize,
         }}
       >
         {display}
